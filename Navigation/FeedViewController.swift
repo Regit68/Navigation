@@ -53,8 +53,8 @@ extension UIButton.Configuration {
     static func freeTrial() -> UIButton.Configuration {
         var config: UIButton.Configuration = .filled()
         config.baseBackgroundColor = .systemGray
-        config.title = "My Post"
-        config.subtitle = "Click to create a new post"
+        config.title = "Post"
+        config.subtitle = "Click to check a new post"
         config.titleAlignment = .center
         config.cornerStyle = .medium
 //        config.showsActivityIndicator = true
