@@ -25,7 +25,7 @@ class FeedViewController: UIViewController {
     
     func createButton() {
         button.center = view.center
-        button.configuration = .freeTrial()
+        button.configuration = .configurateButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 5
         button.setTitleColor(UIColor.white, for: .normal)
@@ -50,7 +50,7 @@ class FeedViewController: UIViewController {
 }
 
 extension UIButton.Configuration {
-    static func freeTrial() -> UIButton.Configuration {
+    static func configurateButton() -> UIButton.Configuration {
         var config: UIButton.Configuration = .filled()
         config.baseBackgroundColor = .systemGray
         config.title = "Post"
@@ -61,15 +61,3 @@ extension UIButton.Configuration {
         return config
     }
 }
-
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard segue.identifier == "post" else {
-//            return
-//        }
-//        guard let viewController = segue.destination as? PostViewController else {
-//            return
-//        }
-//
-//        viewController.post = Post(title: "New Post")
-//    }

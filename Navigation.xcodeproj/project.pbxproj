@@ -15,7 +15,6 @@
 		18028BF12768CD2A00B52F54 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18028BF02768CD2A00B52F54 /* FeedViewController.swift */; };
 		18028BF32768CD4000B52F54 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18028BF22768CD4000B52F54 /* ProfileViewController.swift */; };
 		18028BF52768D16200B52F54 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18028BF42768D16200B52F54 /* PostViewController.swift */; };
-		18A374F12770BC1A00EE1E3A /* StructPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A374F02770BC1A00EE1E3A /* StructPostViewController.swift */; };
 		18A374F32774AA1D00EE1E3A /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A374F22774AA1D00EE1E3A /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +29,6 @@
 		18028BF02768CD2A00B52F54 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		18028BF22768CD4000B52F54 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		18028BF42768D16200B52F54 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		18A374F02770BC1A00EE1E3A /* StructPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructPostViewController.swift; sourceTree = "<group>"; };
 		18A374F22774AA1D00EE1E3A /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,7 +68,6 @@
 				18028BF02768CD2A00B52F54 /* FeedViewController.swift */,
 				18028BF22768CD4000B52F54 /* ProfileViewController.swift */,
 				18028BF42768D16200B52F54 /* PostViewController.swift */,
-				18A374F02770BC1A00EE1E3A /* StructPostViewController.swift */,
 				18A374F22774AA1D00EE1E3A /* InfoViewController.swift */,
 				18028BD02764E4A400B52F54 /* Assets.xcassets */,
 				18028BD22764E4A400B52F54 /* LaunchScreen.storyboard */,
@@ -152,7 +149,6 @@
 				18028BF52768D16200B52F54 /* PostViewController.swift in Sources */,
 				18028BCC2764E4A300B52F54 /* RootTabBarController.swift in Sources */,
 				18028BC82764E4A300B52F54 /* AppDelegate.swift in Sources */,
-				18A374F12770BC1A00EE1E3A /* StructPostViewController.swift in Sources */,
 				18028BF32768CD4000B52F54 /* ProfileViewController.swift in Sources */,
 				18028BF12768CD2A00B52F54 /* FeedViewController.swift in Sources */,
 				18A374F32774AA1D00EE1E3A /* InfoViewController.swift in Sources */,

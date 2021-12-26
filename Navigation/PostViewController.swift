@@ -37,3 +37,8 @@ class PostViewController: UIViewController {
     
 }
 
+struct Post {
+    var title: String?
+}
+
+
