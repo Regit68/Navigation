@@ -11,6 +11,7 @@ class InfoViewController: UIViewController {
 
     let button = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
     let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+    let hiLabel = "Hi, "
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,7 @@ class InfoViewController: UIViewController {
     
     func createButton() {
         button.center = view.center
-        button.configuration = .enterName()
+        button.configuration = .configurateUserNameButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 5
         button.setTitleColor(UIColor.white, for: .normal)
@@ -41,7 +42,6 @@ class InfoViewController: UIViewController {
     
     @objc func showsLabelInfo(_ sender: Any) {
         self.alert(title: "Login", message: "Please, enter your name!", style: .alert)
-        self.label.text = "Hi, "
         // Makes label to apear.
         label.center = CGPoint(x: 200, y: 290)
         label.textAlignment = .center
@@ -56,9 +56,8 @@ class InfoViewController: UIViewController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
         let action = UIAlertAction(title: "OK", style: .default) { action in
             if let textField = alertController.textFields?.first,
-               let text = textField.text,
-               let labelText = self.label.text {
-                self.label.text = labelText + text + "!"
+               let text = textField.text {
+                self.label.text = self.hiLabel + text + "!"
             }
         }
         alertController.addAction(action)
@@ -69,7 +68,7 @@ class InfoViewController: UIViewController {
 }
 
 extension UIButton.Configuration {
-    static func enterName() -> UIButton.Configuration {
+    static func configurateUserNameButton() -> UIButton.Configuration {
         var config: UIButton.Configuration = .filled()
         config.baseBackgroundColor = .systemGray
         config.title = "Enter Data"
