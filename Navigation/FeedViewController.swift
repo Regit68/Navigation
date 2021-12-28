@@ -36,31 +36,11 @@ class FeedViewController: UIViewController {
         
         view.addSubview(openPostButton)
         
-<<<<<<< Updated upstream
-    }
-    
-    func createButton() {
-        button.center = view.center
-        button.configuration = .freeTrial()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 5
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.addTarget(self, action: #selector(connectPostViewController), for: .touchUpInside)
-        view.addSubview(button)
-    }
-    
-// Layout of button.
-    func setUpButton() {
-        button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        button.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -150).isActive = true
-=======
         NSLayoutConstraint.activate([
             openPostButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             openPostButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             openPostButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -150)
         ])
->>>>>>> Stashed changes
     }
     
 //  Will appear Post ViewController and change title of Post VC.
@@ -74,7 +54,7 @@ class FeedViewController: UIViewController {
 }
 
 extension UIButton.Configuration {
-    static func freeTrial() -> UIButton.Configuration {
+    static func configurateButton() -> UIButton.Configuration {
         var config: UIButton.Configuration = .filled()
         config.baseBackgroundColor = .systemGray
         config.title = "My Post"
@@ -85,15 +65,3 @@ extension UIButton.Configuration {
         return config
     }
 }
-
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard segue.identifier == "post" else {
-//            return
-//        }
-//        guard let viewController = segue.destination as? PostViewController else {
-//            return
-//        }
-//
-//        viewController.post = Post(title: "New Post")
-//    }

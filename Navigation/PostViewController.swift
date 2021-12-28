@@ -50,9 +50,6 @@ class PostViewController: UIViewController {
     
 }
 
-<<<<<<< Updated upstream
-=======
 struct Post {
     var title: String?
 }
->>>>>>> Stashed changes
