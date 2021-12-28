@@ -8,32 +8,51 @@
 import UIKit
 
 class PostViewController: UIViewController {
-
+    
     var post: Post?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Post"
+        setUpPostView()
+        changeTitlePostView()
+        openInfoBarButton()
+    }
+    
+    func setUpPostView() {
         view.backgroundColor = .systemGray3
         
+        navigationItem.title = "Post"
+        
+    }
+    
+    func changeTitlePostView() {
         if let post = post {
             navigationItem.title = post.title
         }
-        
-        setUpBarButton()
     }
     
-    func setUpBarButton() {
-        let rightBarButton = UIBarButtonItem(title: "Info", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.connectInfotViewController))
-                self.navigationItem.rightBarButtonItem = rightBarButton
+    func openInfoBarButton() {
+        let rightBarButton = UIBarButtonItem(title: "Info",
+                                             style: UIBarButtonItem.Style.plain,
+                                             target: self,
+                                             action: #selector(self.onOpenInfoBarButtonTap))
+        self.navigationItem.rightBarButtonItem = rightBarButton
     }
     
     // PRESENT: Info Controller will appear as module.
-         @objc func connectInfotViewController() {
-            let infoViewController = InfoViewController()
-            present(infoViewController, animated: true, completion: nil)
-        }
+    @objc func onOpenInfoBarButtonTap() {
+        let infoViewController = InfoViewController()
+        present(infoViewController,
+                animated: true,
+                completion: nil)
+    }
     
 }
 
+<<<<<<< Updated upstream
+=======
+struct Post {
+    var title: String?
+}
+>>>>>>> Stashed changes

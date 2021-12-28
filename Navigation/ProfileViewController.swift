@@ -11,12 +11,15 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = UIColor.systemBrown
+
+        setUpProfileView()
+    }
+    
+    func setUpProfileView() {
+        view.backgroundColor = UIColor.systemBrown
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Profile"
-
     }
     
 }
