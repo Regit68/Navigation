@@ -9,39 +9,40 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
-    let button = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = UIColor.systemYellow
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "Feed"
-        
-        createButton()
-        setUpButton()
-        
-    }
-    
-    func createButton() {
-        button.center = view.center
+    var openPostButton: UIButton = {
+        let button = UIButton()
         button.configuration = .configurateButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 5
         button.setTitleColor(UIColor.white, for: .normal)
-        button.addTarget(self, action: #selector(connectPostViewController), for: .touchUpInside)
-        view.addSubview(button)
-    }
+        button.addTarget(self,
+                         action: #selector(onOpenPostButtonTap),
+                         for: .touchUpInside)
+        return button
+    }()
     
-// Layout of button.
-    func setUpButton() {
-        button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        button.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -150).isActive = true
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setUpViews()
+    }
+        // Layout of views.
+    func setUpViews() {
+        view.backgroundColor = UIColor.systemYellow
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "Feed"
+        
+        view.addSubview(openPostButton)
+        
+        NSLayoutConstraint.activate([
+            openPostButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            openPostButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            openPostButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -150)
+        ])
     }
     
 //  Will appear Post ViewController and change title of Post VC.
-    @objc func connectPostViewController() {
+    @objc func onOpenPostButtonTap() {
         let postViewController = PostViewController()
         postViewController.post = Post(title: "New Post")
         self.navigationController?.pushViewController(postViewController, animated: true)
