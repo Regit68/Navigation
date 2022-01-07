@@ -17,8 +17,8 @@ class RootTabBarController: UITabBarController {
     }
     func setUpTabBar() {
         let feedUINavigationController = UINavigationController(rootViewController: FeedViewController())
-        feedUINavigationController.tabBarItem.image = UIImage(systemName: "newspaper")
-        feedUINavigationController.tabBarItem.selectedImage = UIImage(systemName: "newspaper.fill")
+        feedUINavigationController.tabBarItem.image = UIImage(systemName: "house")
+        feedUINavigationController.tabBarItem.selectedImage = UIImage(systemName: "house.fill")
         
         let profileUINavigationController = UINavigationController(rootViewController: ProfileViewController())
         profileUINavigationController.tabBarItem.image = UIImage(systemName: "person.circle")

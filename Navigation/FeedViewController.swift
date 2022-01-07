@@ -31,7 +31,7 @@ class FeedViewController: UIViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Feed"
-        
+        // Shows openPostButton on the screen
         view.addSubview(openPostButton)
         
         NSLayoutConstraint.activate([
