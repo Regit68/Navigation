@@ -9,15 +9,12 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    //    var statusText: String?
-    
     private let profileHeaderView = ProfileHeaderView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpProfileView()
-        buttonActionShowsStatus()
     }
     
     func setUpProfileView() {
@@ -27,7 +24,6 @@ class ProfileViewController: UIViewController {
         navigationItem.title = "Profile"
         
         view.addSubview(profileHeaderView)
-        
     }
     
     override func viewWillLayoutSubviews() {
@@ -37,26 +33,17 @@ class ProfileViewController: UIViewController {
                                          y: 100,
                                          width: view.bounds.width,
                                          height: 300)
-    }
-    
-    func buttonActionShowsStatus() {
-        profileHeaderView.button.addTarget(self, action: #selector(openStatusTextField(_:)), for: .touchUpInside)
-    }
-    
-//     PRESENT: Status Controller will appear as module.
-    @objc private func openStatusTextField(_ textField: UITextField) {
-        let statusViewController = StatusViewController()
         
-//        statusViewController.statusText = textField.text!
-        statusViewController.delegate = self
-        
-        present(statusViewController, animated: true, completion: nil)
-    }
-    
-}
-
-extension ProfileViewController: StatusViewControllerDelegate {
-    func changeStatusInProfileVC(_ vc: StatusViewController) {
+//        NSLayoutConstraint.activate([
+//            profileHeaderView.topAnchor.constraint(equalTo: view.topAnchor),
+//            profileHeaderView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            profileHeaderView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+//            profileHeaderView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+//            profileHeaderView.leftAnchor.constraint(equalTo: view.leftAnchor),
+//            profileHeaderView.rightAnchor.constraint(equalTo: view.rightAnchor),
+//            profileHeaderView.widthAnchor.constraint(equalTo: view.widthAnchor),
+//            profileHeaderView.heightAnchor.constraint(equalTo: view.heightAnchor)
+//        ])
         
     }
 }
