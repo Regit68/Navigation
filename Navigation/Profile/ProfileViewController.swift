@@ -28,22 +28,16 @@ class ProfileViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
+        profileHeaderView.layer.cornerRadius = profileHeaderView.frame.height / 2
         
-        profileHeaderView.frame = CGRect(x: 0,
-                                         y: 100,
-                                         width: view.bounds.width,
-                                         height: 300)
-        
-//        NSLayoutConstraint.activate([
-//            profileHeaderView.topAnchor.constraint(equalTo: view.topAnchor),
-//            profileHeaderView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            profileHeaderView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-//            profileHeaderView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//            profileHeaderView.leftAnchor.constraint(equalTo: view.leftAnchor),
-//            profileHeaderView.rightAnchor.constraint(equalTo: view.rightAnchor),
-//            profileHeaderView.widthAnchor.constraint(equalTo: view.widthAnchor),
-//            profileHeaderView.heightAnchor.constraint(equalTo: view.heightAnchor)
-//        ])
-        
+        NSLayoutConstraint.activate([
+            profileHeaderView.topAnchor.constraint(equalTo: view.topAnchor),
+            profileHeaderView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            profileHeaderView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            profileHeaderView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            profileHeaderView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            profileHeaderView.heightAnchor.constraint(equalTo: view.heightAnchor)
+        ])
     }
 }
