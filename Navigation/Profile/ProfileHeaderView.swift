@@ -63,7 +63,7 @@ class ProfileHeaderView: UIView {
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 4
         button.backgroundColor = .systemBlue
-    // Instead IBAction.
+        // Instead IBAction.
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return button
     }()
@@ -104,26 +104,26 @@ class ProfileHeaderView: UIView {
         
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
-            avatarImageView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
+            avatarImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             avatarImageView.widthAnchor.constraint(equalToConstant: avatarWidth),
             avatarImageView.heightAnchor.constraint(equalToConstant: avatarWidth),
             
             nameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
-            nameLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 160),
-            nameLabel.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, constant: -180),
+            nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
+            nameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             
-            statusLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 80),
-            statusLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 160),
-            statusLabel.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, constant: -180),
+            statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 30),
+            statusLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
+            statusLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             
-            statusTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 110),
-            statusTextField.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 160),
-            statusTextField.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, constant: -180),
+            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 10),
+            statusTextField.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
+            statusTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
-
-            button.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 165),
-            button.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
-            button.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, constant: -35),
+            
+            button.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 10),
+            button.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            button.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             button.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
