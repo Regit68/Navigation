@@ -10,7 +10,7 @@ import UIKit
 class ProfileHeaderView: UIView {
     
     private var statusText: String?
-    private let avatarWidth: CGFloat = 120
+    private let avatarWidth: CGFloat = 125
     
     private lazy var avatarImageView: UIImageView = {
         let image = UIImage(named: "Temple Grandin")
@@ -108,21 +108,20 @@ class ProfileHeaderView: UIView {
             avatarImageView.widthAnchor.constraint(equalToConstant: avatarWidth),
             avatarImageView.heightAnchor.constraint(equalToConstant: avatarWidth),
             
-            nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 120),
+            nameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
             nameLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 160),
             nameLabel.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, constant: -180),
             
-            statusLabel.topAnchor.constraint(equalTo: topAnchor, constant: 155),
+            statusLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 80),
             statusLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 160),
             statusLabel.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, constant: -180),
-            statusLabel.heightAnchor.constraint(equalTo: heightAnchor, constant: -865),
             
-            statusTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 100),
+            statusTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 110),
             statusTextField.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 160),
             statusTextField.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, constant: -180),
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
-            
-            button.topAnchor.constraint(equalTo: topAnchor, constant: 250),
+
+            button.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 165),
             button.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
             button.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor, constant: -35),
             button.heightAnchor.constraint(equalToConstant: 50)
