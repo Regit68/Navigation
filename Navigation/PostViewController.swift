@@ -21,7 +21,7 @@ class PostViewController: UIViewController {
     }
     
     func setUpPostView() {
-        view.backgroundColor = .systemGray3
+        view.backgroundColor = .systemGreen
         navigationItem.title = "Post"
         
     }

@@ -13,9 +13,10 @@
 		18028BD12764E4A400B52F54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18028BD02764E4A400B52F54 /* Assets.xcassets */; };
 		18028BD42764E4A400B52F54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18028BD22764E4A400B52F54 /* LaunchScreen.storyboard */; };
 		18028BF12768CD2A00B52F54 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18028BF02768CD2A00B52F54 /* FeedViewController.swift */; };
-		18028BF32768CD4000B52F54 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18028BF22768CD4000B52F54 /* ProfileViewController.swift */; };
 		18028BF52768D16200B52F54 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18028BF42768D16200B52F54 /* PostViewController.swift */; };
 		18A374F32774AA1D00EE1E3A /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A374F22774AA1D00EE1E3A /* InfoViewController.swift */; };
+		18A375522783014900EE1E3A /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A375512783014900EE1E3A /* ProfileHeaderView.swift */; };
+		18A375542783016600EE1E3A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A375532783016600EE1E3A /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,9 +28,10 @@
 		18028BD32764E4A400B52F54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18028BD52764E4A400B52F54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18028BF02768CD2A00B52F54 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		18028BF22768CD4000B52F54 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		18028BF42768D16200B52F54 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		18A374F22774AA1D00EE1E3A /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		18A375512783014900EE1E3A /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		18A375532783016600EE1E3A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,14 +68,23 @@
 				18028BC92764E4A300B52F54 /* SceneDelegate.swift */,
 				18028BCB2764E4A300B52F54 /* RootTabBarController.swift */,
 				18028BF02768CD2A00B52F54 /* FeedViewController.swift */,
-				18028BF22768CD4000B52F54 /* ProfileViewController.swift */,
 				18028BF42768D16200B52F54 /* PostViewController.swift */,
 				18A374F22774AA1D00EE1E3A /* InfoViewController.swift */,
+				18A37550278300B800EE1E3A /* Profile */,
 				18028BD02764E4A400B52F54 /* Assets.xcassets */,
 				18028BD22764E4A400B52F54 /* LaunchScreen.storyboard */,
 				18028BD52764E4A400B52F54 /* Info.plist */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		18A37550278300B800EE1E3A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				18A375512783014900EE1E3A /* ProfileHeaderView.swift */,
+				18A375532783016600EE1E3A /* ProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,10 +160,11 @@
 				18028BF52768D16200B52F54 /* PostViewController.swift in Sources */,
 				18028BCC2764E4A300B52F54 /* RootTabBarController.swift in Sources */,
 				18028BC82764E4A300B52F54 /* AppDelegate.swift in Sources */,
-				18028BF32768CD4000B52F54 /* ProfileViewController.swift in Sources */,
 				18028BF12768CD2A00B52F54 /* FeedViewController.swift in Sources */,
 				18A374F32774AA1D00EE1E3A /* InfoViewController.swift in Sources */,
+				18A375542783016600EE1E3A /* ProfileViewController.swift in Sources */,
 				18028BCA2764E4A300B52F54 /* SceneDelegate.swift in Sources */,
+				18A375522783014900EE1E3A /* ProfileHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,9 +16,7 @@ class InfoViewController: UIViewController {
         button.layer.cornerRadius = 5
         button.setTitleColor(UIColor.white, for: .normal)
         // when button is clicked, alert message will appear.
-        button.addTarget(self,
-                         action: #selector(showsLabelInfo(_:)),
-                         for: .touchUpInside)
+        button.addTarget(self, action: #selector(showsLabelInfo(_:)), for: .touchUpInside)
         return button
     }()
 
@@ -61,7 +59,7 @@ class InfoViewController: UIViewController {
     }
 
     @objc func showsLabelInfo(_ sender: Any) {
-        self.alert(title: "Login", message: "Please, enter your name!", style: .alert)
+       self.alert(title: "Login", message: "Please, enter your name!", style: .alert)
 
     }
 
@@ -88,7 +86,6 @@ extension UIButton.Configuration {
         config.subtitle = "Click to enter your data"
         config.titleAlignment = .center
         config.cornerStyle = .medium
-        //        config.showsActivityIndicator = true
         return config
     }
 }
