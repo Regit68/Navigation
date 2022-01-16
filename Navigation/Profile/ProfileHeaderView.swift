@@ -68,15 +68,6 @@ class ProfileHeaderView: UIView {
         return button
     }()
     
-    lazy var button: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = .systemOrange
-        button.setTitle("Tap me", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-//        button.layer.cornerRadius = 4
-        return button
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -105,8 +96,7 @@ class ProfileHeaderView: UIView {
          fullNameLabel,
          statusLabel,
          statusTextField,
-         setStatusButton,
-         button].forEach {
+         setStatusButton].forEach {
             // Enables autolayout for our imageView.
             $0.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview($0)
@@ -134,11 +124,7 @@ class ProfileHeaderView: UIView {
             setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 10),
             setStatusButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             setStatusButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            setStatusButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-            button.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            setStatusButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }
