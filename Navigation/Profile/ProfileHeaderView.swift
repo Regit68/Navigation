@@ -22,7 +22,7 @@ class ProfileHeaderView: UIView {
         return imageView
     }()
     
-    private lazy var nameLabel: UILabel = {
+    private lazy var fullNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Temple Grandin"
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
@@ -53,8 +53,9 @@ class ProfileHeaderView: UIView {
         return textField
     }()
     
-    lazy var button: UIButton = {
+    lazy var setStatusButton: UIButton = {
         let button = UIButton(type: .system)
+        button.backgroundColor = .systemBlue
         button.setTitle("Set status", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 12
@@ -62,9 +63,17 @@ class ProfileHeaderView: UIView {
         button.layer.shadowOffset = CGSize(width: 4, height: 4)
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 4
-        button.backgroundColor = .systemBlue
         // Instead IBAction.
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var button: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .systemOrange
+        button.setTitle("Tap me", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+//        button.layer.cornerRadius = 4
         return button
     }()
     
@@ -93,9 +102,10 @@ class ProfileHeaderView: UIView {
     
     private func setUpProfileViews() {
         [avatarImageView,
-         nameLabel,
+         fullNameLabel,
          statusLabel,
          statusTextField,
+         setStatusButton,
          button].forEach {
             // Enables autolayout for our imageView.
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -108,11 +118,11 @@ class ProfileHeaderView: UIView {
             avatarImageView.widthAnchor.constraint(equalToConstant: avatarWidth),
             avatarImageView.heightAnchor.constraint(equalToConstant: avatarWidth),
             
-            nameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
-            nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
-            nameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            fullNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
+            fullNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
+            fullNameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             
-            statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 30),
+            statusLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 30),
             statusLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
             statusLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             
@@ -121,10 +131,14 @@ class ProfileHeaderView: UIView {
             statusTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
             
-            button.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 10),
-            button.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            button.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            button.heightAnchor.constraint(equalToConstant: 50)
+            setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 10),
+            setStatusButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            setStatusButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            setStatusButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            button.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }
