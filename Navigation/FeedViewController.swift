@@ -9,16 +9,13 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
-    var openPostButton: UIButton = {
-        let button = UIButton()
-        button.configuration = .configurateButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 5
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.addTarget(self,
-                         action: #selector(onOpenPostButtonTap),
-                         for: .touchUpInside)
-        return button
+    var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = 10
+        return stackView
     }()
     
     override func viewDidLoad() {
@@ -31,14 +28,29 @@ class FeedViewController: UIViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Feed"
-        // Shows openPostButton on the screen
-        view.addSubview(openPostButton)
+        
+        view.addSubview(stackView)
+        addButtonsToStackView()
         
         NSLayoutConstraint.activate([
-            openPostButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            openPostButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            openPostButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -150)
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+    }
+    
+    func addButtonsToStackView() {
+        let numberOfButtons = 1...2
+
+        for i in numberOfButtons {
+            let button = UIButton()
+            button.setTitle("\(i)", for: .normal)
+            stackView.addArrangedSubview(button)
+            button.setTitleColor(.black, for: .normal)
+            button.layer.borderColor = UIColor.black.cgColor
+            button.layer.borderWidth = 2
+            button.layer.cornerRadius = 4
+            button.addTarget(self, action: #selector(onOpenPostButtonTap), for: .touchUpInside)
+        }
     }
     
 //  Will appear Post ViewController and change title of Post VC.
@@ -58,7 +70,6 @@ extension UIButton.Configuration {
         config.subtitle = "Click to check a new post"
         config.titleAlignment = .center
         config.cornerStyle = .medium
-//        config.showsActivityIndicator = true
         return config
     }
 }
