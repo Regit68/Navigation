@@ -48,7 +48,7 @@ class ProfileViewController: UIViewController {
     }
 }
 
-// Shows ProfileHeaderView on the ProfileViewController.
+//// Shows ProfileHeaderView on the ProfileViewController.
 //        profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
 //
 //        NSLayoutConstraint.activate([
