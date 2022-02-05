@@ -17,6 +17,7 @@
 		18A374F32774AA1D00EE1E3A /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A374F22774AA1D00EE1E3A /* InfoViewController.swift */; };
 		18A375522783014900EE1E3A /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A375512783014900EE1E3A /* ProfileHeaderView.swift */; };
 		18A375542783016600EE1E3A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A375532783016600EE1E3A /* ProfileViewController.swift */; };
+		18AE4CEA27AC04D70099AEE9 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE4CE927AC04D70099AEE9 /* LogInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		18A374F22774AA1D00EE1E3A /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		18A375512783014900EE1E3A /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		18A375532783016600EE1E3A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		18AE4CE927AC04D70099AEE9 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			children = (
 				18A375512783014900EE1E3A /* ProfileHeaderView.swift */,
 				18A375532783016600EE1E3A /* ProfileViewController.swift */,
+				18AE4CE927AC04D70099AEE9 /* LogInViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 			files = (
 				18028BF52768D16200B52F54 /* PostViewController.swift in Sources */,
 				18028BCC2764E4A300B52F54 /* RootTabBarController.swift in Sources */,
+				18AE4CEA27AC04D70099AEE9 /* LogInViewController.swift in Sources */,
 				18028BC82764E4A300B52F54 /* AppDelegate.swift in Sources */,
 				18028BF12768CD2A00B52F54 /* FeedViewController.swift in Sources */,
 				18A374F32774AA1D00EE1E3A /* InfoViewController.swift in Sources */,
