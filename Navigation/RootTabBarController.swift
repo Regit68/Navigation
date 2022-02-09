@@ -19,14 +19,17 @@ class RootTabBarController: UITabBarController {
         let feedUINavigationController = UINavigationController(rootViewController: FeedViewController())
         feedUINavigationController.tabBarItem.image = UIImage(systemName: "house")
         feedUINavigationController.tabBarItem.selectedImage = UIImage(systemName: "house.fill")
+        feedUINavigationController.tabBarItem.title = "Feed"
         
 //        let profileUINavigationController = UINavigationController(rootViewController: ProfileViewController())
 //        profileUINavigationController.tabBarItem.image = UIImage(systemName: "person.circle")
 //        profileUINavigationController.tabBarItem.selectedImage = UIImage(named: "person.circle.fill")
+//        profileUINavigationController.tabBarItem.title = "Profile"
         
         let logInViewController = UINavigationController(rootViewController: LogInViewController())
         logInViewController.tabBarItem.image = UIImage(systemName: "person.circle")
         logInViewController.tabBarItem.selectedImage = UIImage(named: "person.circle.fill")
+        logInViewController.tabBarItem.title = "Profile"
         
 // An array of the root view controllers displayed by the tab bar interface.
         viewControllers = [feedUINavigationController, logInViewController]

@@ -25,11 +25,11 @@ class LogInViewController: UIViewController {
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 0.5
         textField.layer.cornerRadius = 10
+        textField.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         textField.clipsToBounds = true
         textField.textColor = .black
         textField.backgroundColor = .systemGray6
         textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-//        textField.tintColor = .accentColor
         textField.autocapitalizationType = .none
         return textField
     }()
@@ -42,16 +42,15 @@ class LogInViewController: UIViewController {
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 0.5
         textField.layer.cornerRadius = 10
+        textField.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         textField.clipsToBounds = true
         textField.textColor = .black
         textField.backgroundColor = .systemGray6
         textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-//        textField.tintColor = .accentColor
         textField.autocapitalizationType = .none
         textField.isSecureTextEntry = true
         return textField
     }()
-    
     
     lazy var logInButton: UIButton = {
         let button = UIButton(type: .system)
@@ -80,7 +79,7 @@ class LogInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         setUpLogInView()
         
 // MARK: KEYBOARD observers
@@ -121,19 +120,19 @@ class LogInViewController: UIViewController {
          passwordTextField,
          logInButton,
          containerView,
-         scrollView
-        ].forEach {
+         scrollView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
         }
         
-        view.addSubview(scrollView)
         scrollView.addSubview(containerView)
-
-        containerView.addSubview(logoVK)
-        containerView.addSubview(emailPhoneTextField)
-        containerView.addSubview(passwordTextField)
-        containerView.addSubview(logInButton)
+        
+        [logoVK,
+         emailPhoneTextField,
+         passwordTextField,
+         logInButton].forEach {
+            containerView.addSubview($0)
+        }
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -141,7 +140,7 @@ class LogInViewController: UIViewController {
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             scrollView.heightAnchor.constraint(equalTo: view.heightAnchor),
-
+            
             containerView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             containerView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
@@ -175,21 +174,21 @@ class LogInViewController: UIViewController {
     @objc private func buttonPressed(_ sender: UIButton) {
         sender.alpha = 0.5
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            //Bring's sender's opacity back up to fully opaque.
+            /// Bring's sender's opacity back up to fully opaque.
             sender.alpha = 1.0
         }
     }
     
     //  Will appear Profile ViewController.
     @objc func openProfileVC() {
-        let profileViewController = ProfileViewController()
+        let profileViewController = ProfileViewContoller()
         self.navigationController?.pushViewController(profileViewController, animated: true)
     }
 }
 
 extension LogInViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        scrollView.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = true
         print(scrollView.contentOffset.y)
     }
 }
