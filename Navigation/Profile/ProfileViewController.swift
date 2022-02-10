@@ -16,6 +16,8 @@ class ProfileViewContoller: UIViewController {
         "Science"
     ]
     
+    private let profileHeaderView = ProfileHeaderView()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         
@@ -23,16 +25,15 @@ class ProfileViewContoller: UIViewController {
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self))
         tableView.dataSource = self
         tableView.delegate = self
-//        /// Delete scroll indicator from right side.
-//        tableView.showsVerticalScrollIndicator = true
+        /// Delete scroll indicator from right side.
+        tableView.showsVerticalScrollIndicator = true
         return tableView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "NEWS"
-        view.backgroundColor = .red
+        view.addSubview(profileHeaderView)
         
         setUpProfileViewController()
     }
@@ -47,7 +48,12 @@ class ProfileViewContoller: UIViewController {
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            profileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
         ])
     }
 }
@@ -73,9 +79,6 @@ extension ProfileViewContoller: UITableViewDataSource {
     }
 // MARK: Header for section.
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let vw = UIView()
-//        vw.backgroundColor = UIColor.orange
-//        return vw
         let profileHeaderView = ProfileHeaderView()
 
         return profileHeaderView
@@ -90,11 +93,15 @@ extension ProfileViewContoller: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        /// Показывает адрес ячейки.
-//        print("indexPath \(indexPath)")
+        /// Показывает адрес ячейки.
+        print("indexPath \(indexPath)")
 
         /// Cancel gray selection on section.
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return 300
     }
 }
 
