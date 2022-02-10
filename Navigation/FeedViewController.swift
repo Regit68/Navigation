@@ -56,7 +56,7 @@ class FeedViewController: UIViewController {
 //  Will appear Post ViewController and change title of Post VC.
     @objc func onOpenPostButtonTap() {
         let postViewController = PostViewController()
-        postViewController.post = Post(title: "New Post")
+        postViewController.postModel = PostModel(title: "New Post")
         self.navigationController?.pushViewController(postViewController, animated: true)
     }
     

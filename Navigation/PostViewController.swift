@@ -9,7 +9,7 @@ import UIKit
 
 class PostViewController: UIViewController {
     
-    var post: Post?
+    var postModel: PostModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class PostViewController: UIViewController {
     }
     
     func renamePostViewTitle() {
-        if let post = post {
+        if let post = postModel {
             navigationItem.title = post.title
         }
     }
@@ -48,6 +48,6 @@ class PostViewController: UIViewController {
     
 }
 
-struct Post {
+struct PostModel {
     var title: String?
 }
