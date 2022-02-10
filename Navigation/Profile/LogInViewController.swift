@@ -63,7 +63,7 @@ class LogInViewController: UIViewController {
         return button
     }()
     
-// MARK: For scroll view create content view.
+    // MARK: For scroll view create content view.
     private lazy var containerView: UIView = {
         let view = UIView()
         return view
@@ -76,13 +76,13 @@ class LogInViewController: UIViewController {
         scrollView.delegate = self
         return scrollView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         setUpLogInView()
         
-// MARK: KEYBOARD observers
+        // MARK: KEYBOARD observers
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -94,23 +94,23 @@ class LogInViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-//  MARK: KEYBOARD actions
+    //  MARK: KEYBOARD actions
     @objc fileprivate func keyboardWillShow(notification: NSNotification) {
-            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-                /// Когда клавиатура появляется, scroll view делает отступ по низу.
-                scrollView.contentInset.bottom = keyboardSize.height
-                /// Когда клавиатура появляется, verticalScrollIndicatorInsets делает отступ по низу.
-                scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
-            }
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            /// Когда клавиатура появляется, scroll view делает отступ по низу.
+            scrollView.contentInset.bottom = keyboardSize.height
+            /// Когда клавиатура появляется, verticalScrollIndicatorInsets делает отступ по низу.
+            scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
         }
-        
+    }
+    
     @objc fileprivate func keyboardWillHide(notification: NSNotification) {
         /// Когда клавиатура скрывается, scroll view делает отступ до 0.
-            scrollView.contentInset.bottom = .zero
+        scrollView.contentInset.bottom = .zero
         /// Когда клавиатура скрывается, verticalScrollIndicatorInsets делает отступ до 0.
-            scrollView.verticalScrollIndicatorInsets = .zero
-            
-        }
+        scrollView.verticalScrollIndicatorInsets = .zero
+        
+    }
     
     func setUpLogInView() {
         view.backgroundColor = UIColor.white
@@ -137,8 +137,8 @@ class LogInViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             scrollView.heightAnchor.constraint(equalTo: view.heightAnchor),
             
@@ -155,18 +155,18 @@ class LogInViewController: UIViewController {
             logoVK.heightAnchor.constraint(equalToConstant: logoVKWidth),
             
             emailPhoneTextField.topAnchor.constraint(equalTo: logoVK.bottomAnchor, constant: 120),
-            emailPhoneTextField.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            emailPhoneTextField.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            emailPhoneTextField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+            emailPhoneTextField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
             emailPhoneTextField.heightAnchor.constraint(equalToConstant: 50),
             
             passwordTextField.topAnchor.constraint(equalTo: emailPhoneTextField.bottomAnchor),
-            passwordTextField.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            passwordTextField.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            passwordTextField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+            passwordTextField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
             passwordTextField.heightAnchor.constraint(equalToConstant: 50),
             
             logInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 16),
-            logInButton.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            logInButton.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            logInButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+            logInButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
             logInButton.heightAnchor.constraint(equalToConstant: 50),
             logInButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
@@ -182,7 +182,7 @@ class LogInViewController: UIViewController {
     
     //  Will appear Profile ViewController.
     @objc func openProfileVC() {
-        let profileViewController = ProfileViewContoller()
+        let profileViewController = ProfileViewController()
         self.navigationController?.pushViewController(profileViewController, animated: true)
     }
 }

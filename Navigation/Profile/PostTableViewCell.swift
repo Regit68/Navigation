@@ -24,7 +24,7 @@ class PostTableViewCell: UITableViewCell {
             viewsLabel.text = viewsString
         }
     }
-
+    
     private let authorLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
@@ -35,7 +35,7 @@ class PostTableViewCell: UITableViewCell {
     
     private let postImageView: UIImageView = {
         let imageView = UIImageView()
-        /// Adapts to screen size.
+        /// Adapts image to postImageView size.
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .black
         return imageView
@@ -113,49 +113,3 @@ private extension PostTableViewCell {
         ])
     }
 }
-
-
-
-
-
-    
-    
-
-
-
-
-    
-//    private let profileHeaderView = ProfileHeaderView()
-   //
-   //    override func viewDidLoad() {
-   //        super.viewDidLoad()
-   //
-   //        setUpProfileTableHeaderView()
-   //    }
-   //
-   //    func setUpProfileTableHeaderView() {
-   //        view.backgroundColor = UIColor.systemGray6
-   //
-   //        navigationController?.navigationBar.prefersLargeTitles = false
-   //        navigationItem.title = "Profile"
-   //
-   //        view.addSubview(profileHeaderView)
-   //    }
-   //
-   //    override func viewWillLayoutSubviews() {
-   //        super.viewWillLayoutSubviews()
-   //
-   //        // Shows ProfileHeaderView on the ProfileTableHeaderViewController.
-   //        profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
-   //
-   //        NSLayoutConstraint.activate([
-   //            profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-   //            profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-   //            profileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-   //            profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
-   //        ])
-   //    }
-   //}
-   //
-   //
-   //

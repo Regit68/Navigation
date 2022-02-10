@@ -7,15 +7,7 @@
 
 import UIKit
 
-class ProfileViewContoller: UIViewController {
-    
-    private let posts: [String] = [
-        "Books",
-        "Movies",
-        "Show",
-        "Science"
-    ]
-    
+class ProfileViewController: UIViewController {
     private let profileHeaderView = ProfileHeaderView()
     
     private lazy var tableView: UITableView = {
@@ -43,22 +35,17 @@ class ProfileViewContoller: UIViewController {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
         }
-        
+        /// tableView is container for header.
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
-            profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            profileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }
 
-extension ProfileViewContoller: UITableViewDataSource {
+extension ProfileViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return PublicationStorage.publications.count
     }
@@ -79,13 +66,12 @@ extension ProfileViewContoller: UITableViewDataSource {
     }
 // MARK: Header for section.
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let profileHeaderView = ProfileHeaderView()
-
-        return profileHeaderView
+        /// Checks for number of section, to make sure this header added to the first one.
+        return section == 0 ? profileHeaderView : nil
     }
 }
 
-extension ProfileViewContoller: UITableViewDelegate {
+extension ProfileViewController: UITableViewDelegate {
     /// Cell's height redefinition.
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         /// Automatically counts the height of the cell.
@@ -95,7 +81,7 @@ extension ProfileViewContoller: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         /// Показывает адрес ячейки.
         print("indexPath \(indexPath)")
-
+        
         /// Cancel gray selection on section.
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -104,63 +90,3 @@ extension ProfileViewContoller: UITableViewDelegate {
         return 300
     }
 }
-
-
-
-
-
-
-
-
-//class ProfileViewController: UIViewController {
-//
-//    private let profileHeaderView = ProfileHeaderView()
-//
-////    lazy var button: UIButton = {
-////        let button = UIButton(type: .system)
-////        button.translatesAutoresizingMaskIntoConstraints = false
-////        button.backgroundColor = .systemOrange
-////        button.setTitle("Tap me", for: .normal)
-////        button.setTitleColor(.black, for: .normal)
-//////        button.layer.cornerRadius = 4
-////        return button
-////    }()
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        setUpProfileView()
-//    }
-//
-//    func setUpProfileView() {
-//        view.backgroundColor = UIColor.systemGray6
-//
-//        navigationController?.navigationBar.prefersLargeTitles = false
-//        navigationItem.title = "Profile"
-//
-//        view.addSubview(profileHeaderView)
-////        view.addSubview(button)
-//    }
-//
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
-//
-//        // Shows ProfileHeaderView on the ProfileViewController.
-//        profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        NSLayoutConstraint.activate([
-//            profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-//            profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            profileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
-//        ])
-//
-//        //        NSLayoutConstraint.activate([
-//        //            button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-//        //            button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-//        //            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-//        //        ])
-//    }
-//}
-//
-//
