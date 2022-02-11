@@ -174,7 +174,7 @@ class LogInViewController: UIViewController {
     
     @objc private func buttonPressed(_ sender: UIButton) {
         sender.alpha = 0.5
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             /// Bring's sender's opacity back up to fully opaque.
             sender.alpha = 1.0
         }
