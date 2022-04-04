@@ -9,12 +9,6 @@ import UIKit
 
 class PhotoTableViewCell: UITableViewCell {
     
-//    var offset: CGFloat {
-//        return 12
-//    }
-    
-//    let photoSize: CGFloat = width = height = (screen width - offset) / 4
-    
     var photo: Photo? {
         didSet {
             guard let photo = photo else { return }
@@ -39,6 +33,7 @@ class PhotoTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         /// Adapts image to postImageView size.
         imageView.contentMode = .scaleAspectFit
+        imageView.tintColor = UIColor(named: "AccentColor")
         return imageView
     }()
     
@@ -48,6 +43,8 @@ class PhotoTableViewCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 6
+        imageView.layer.borderColor = UIColor.gray.cgColor
+        imageView.layer.borderWidth = 1
         return imageView
     }()
     
@@ -57,6 +54,8 @@ class PhotoTableViewCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 6
+        imageView.layer.borderColor = UIColor.gray.cgColor
+        imageView.layer.borderWidth = 1
         return imageView
     }()
     
@@ -66,6 +65,8 @@ class PhotoTableViewCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 6
+        imageView.layer.borderColor = UIColor.gray.cgColor
+        imageView.layer.borderWidth = 1
         return imageView
     }()
     
@@ -75,6 +76,8 @@ class PhotoTableViewCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 6
+        imageView.layer.borderColor = UIColor.gray.cgColor
+        imageView.layer.borderWidth = 1
         return imageView
     }()
 
@@ -94,6 +97,10 @@ class PhotoTableViewCell: UITableViewCell {
 // MARK: Layout
 private extension PhotoTableViewCell {
     func setUpPhotoTableViewCell() {
+        let allOffsets: CGFloat = 1290 // 48 = 12+8+8+8+12
+        let screenWidth: CGFloat = UIScreen.main.bounds.width
+        let photoSize: CGFloat = screenWidth - allOffsets / 4
+        
         [titleLabel,
          arrowButton,
          photo1ImageView,
@@ -108,34 +115,35 @@ private extension PhotoTableViewCell {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
-//            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32),
             
-//            arrowButton.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 10),
+            arrowButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
             arrowButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
             arrowButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-            
+
             photo1ImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
             photo1ImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
-            photo1ImageView.widthAnchor.constraint(equalTo: self.widthAnchor),
-            photo1ImageView.heightAnchor.constraint(equalTo: self.heightAnchor),
-            
+            photo1ImageView.widthAnchor.constraint(equalToConstant: photoSize),
+            photo1ImageView.heightAnchor.constraint(equalToConstant: photoSize),
+            photo1ImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+
             photo2ImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
             photo2ImageView.leadingAnchor.constraint(equalTo: photo1ImageView.trailingAnchor, constant: 8),
-            photo2ImageView.widthAnchor.constraint(equalTo: self.widthAnchor),
-            photo2ImageView.heightAnchor.constraint(equalTo: self.heightAnchor),
-            
+            photo2ImageView.widthAnchor.constraint(equalToConstant: photoSize),
+            photo2ImageView.heightAnchor.constraint(equalToConstant: photoSize),
+            photo2ImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+
             photo3ImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
             photo3ImageView.leadingAnchor.constraint(equalTo: photo2ImageView.trailingAnchor, constant: 8),
-            photo3ImageView.widthAnchor.constraint(equalTo: self.widthAnchor),
-            photo3ImageView.heightAnchor.constraint(equalTo: self.heightAnchor),
-            
+            photo3ImageView.widthAnchor.constraint(equalToConstant: photoSize),
+            photo3ImageView.heightAnchor.constraint(equalToConstant: photoSize),
+            photo3ImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+
             photo4ImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
             photo4ImageView.leadingAnchor.constraint(equalTo: photo3ImageView.trailingAnchor, constant: 8),
-            photo4ImageView.widthAnchor.constraint(equalTo: self.widthAnchor),
-            photo4ImageView.heightAnchor.constraint(equalTo: self.heightAnchor)
+            photo4ImageView.widthAnchor.constraint(equalToConstant: photoSize),
+            photo4ImageView.heightAnchor.constraint(equalToConstant: photoSize),
+            photo4ImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
         ])
     }
 }
-
-// MARK: image (Ширнину / 4 - отступы).
-// StackView

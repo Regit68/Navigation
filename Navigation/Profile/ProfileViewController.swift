@@ -50,7 +50,6 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
 //        guard PublicationStorage.publications.isEmpty else { return 0 }
-        
         return PublicationStorage.publications.count
     }
     /// Number Of Rows In Section
@@ -63,21 +62,22 @@ extension ProfileViewController: UITableViewDataSource {
     }
     /// Shows row at section
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: UITableViewCell?
-//        let publication = PublicationStorage.publications[indexPath.section][indexPath.row]
         
         if indexPath.section == 0 {
-            cell = tableView.dequeueReusableCell(
+            let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: PhotoTableViewCell.self),
                 for: indexPath) as! PhotoTableViewCell
-            cell = PublicationStorage.publications[indexPath.section][indexPath.row] as? UITableViewCell
+            
+            cell.photo = PublicationStorage.publications[indexPath.section][indexPath.row] as? Photo
+            return cell
         } else {
-            cell = tableView.dequeueReusableCell(
+            let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: PostTableViewCell.self),
                 for: indexPath) as! PostTableViewCell
-            cell = PublicationStorage.publications[indexPath.section][indexPath.row] as? UITableViewCell
+            
+            cell.post = PublicationStorage.publications[indexPath.section][indexPath.row] as? Post
+            return cell
         }
-        return cell ?? UITableViewCell()
     }
     
     // MARK: Header for section.
@@ -94,10 +94,14 @@ extension ProfileViewController: UITableViewDelegate {
         /// Automatically counts the height of the cell.
         return UITableView.automaticDimension
     }
-    
+    /// Переход по ячейке.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /// Показывает адрес ячейки.
+        /// Shows cell address.
         print("indexPath \(indexPath)")
+        /// Will appear PhotoGalleryViewController.
+        let photoGalleryVC = PhotoGalleryViewController()
+        
+        self.navigationController?.pushViewController(photoGalleryVC, animated: true)
         
         /// Cancel gray selection on section.
         tableView.deselectRow(at: indexPath, animated: true)
@@ -107,53 +111,11 @@ extension ProfileViewController: UITableViewDelegate {
         return 300
     }
 }
-
-
-
-//// MARK: DataSource
-//extension ProfileViewController: UITableViewDataSource {
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return PublicationStorage.publications.count
-//    }
-//    /// Number Of Rows In Section
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return PublicationStorage.publications[section].count
-//    }
-//    /// Shows row at section
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self), for: indexPath) as? PostTableViewCell {
-//            /// Преобразование ячейки. Наполняем ячеку. Обращение к двухмерному массиву.
-//            cell.post = PublicationStorage.publications[indexPath.section][indexPath.row]
-//
-//            return cell
-//        }
-//
-//        return UITableViewCell()
-//    }
-//// MARK: Header for section.
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        /// Checks for number of section, to make sure this header added to the first one.
-//        return section == 0 ? profileHeaderView : nil
-//    }
-//}
-//
-//// MARK: Delegate
-//extension ProfileViewController: UITableViewDelegate {
-//    /// Cell's height redefinition.
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        /// Automatically counts the height of the cell.
-//        return UITableView.automaticDimension
-//    }
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        /// Показывает адрес ячейки.
-//        print("indexPath \(indexPath)")
-//
-//        /// Cancel gray selection on section.
-//        tableView.deselectRow(at: indexPath, animated: true)
-//    }
-//
-//    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-//        return 300
-//    }
-//}
+/*
+ //  Will appear Post ViewController and change title of Post VC.
+     @objc func onOpenPostButtonTap() {
+         let postViewController = PostViewController()
+         postViewController.postModel = PostModel(title: "New Post")
+         self.navigationController?.pushViewController(postViewController, animated: true)
+     }
+ */

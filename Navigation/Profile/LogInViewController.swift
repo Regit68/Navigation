@@ -19,8 +19,8 @@ class LogInViewController: UIViewController {
     
     lazy var emailPhoneTextField: UIView = {
         let textField = UITextField()
-        textField.setLeftPaddingPoints(10)
-        textField.setRightPaddingPoints(10)
+        textField.setLeftPaddingPoints()
+        textField.setRightPaddingPoints()
         textField.placeholder = "Email or phone"
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 0.5
@@ -36,8 +36,8 @@ class LogInViewController: UIViewController {
     
     lazy var passwordTextField: UIView = {
         let textField = UITextField()
-        textField.setLeftPaddingPoints(10)
-        textField.setRightPaddingPoints(10)
+        textField.setLeftPaddingPoints()
+        textField.setRightPaddingPoints()
         textField.placeholder = "Password"
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 0.5

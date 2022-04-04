@@ -16,7 +16,7 @@ class InfoViewController: UIViewController {
         button.layer.cornerRadius = 5
         button.setTitleColor(UIColor.white, for: .normal)
         // when button is clicked, alert message will appear.
-        button.addTarget(self, action: #selector(showsLabelInfo(_:)), for: .touchUpInside)
+        button.addTarget(InfoViewController.self, action: #selector(showsLabelInfo(_:)), for: .touchUpInside)
         return button
     }()
 

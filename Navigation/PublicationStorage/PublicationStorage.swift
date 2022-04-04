@@ -13,13 +13,30 @@ var tulipsField = UIImage(named: "tulipsField")
 var catDog = UIImage(named: "catDog")
 var arrow = UIImage(systemName: "arrow.right")
 
+//var cake = UIImage(named: "cake")
+//var flamingo = UIImage(named: "flamingo")
+//var girl = UIImage(named: "girl")
+//var mallard = UIImage(named: "mallard")
+//var iceCream = UIImage(named: "iceCream")
+//var japaneseGarden = UIImage(named: "japaneseGarden")
+//var horseLady = UIImage(named: "horseLady")
+//var madHatter = UIImage(named: "madHatter")
+//var northernLight = UIImage(named: "northernLight")
+//var pathosFair = UIImage(named: "pathosFair")
+//var spermWhale = UIImage(named: "spermWhale")
+//var samoyeds = UIImage(named: "samoyeds")
+//var scientistsSingapore = UIImage(named: "scientistsSingapore")
+//var surfing = UIImage(named: "surfing")
+//var universe = UIImage(named: "universe")
+//var wingsuitRider = UIImage(named: "wingsuitRider")
+
 var harukiMurakami = UIImage(named: "1Q84")
 var wednesdayTimBurton = UIImage(named: "Wednesday Tim Burton")
 var moulinRouge = UIImage(named: "Moulin Rouge")
 var heartTransplantation = UIImage(named: "Heart transplantation")
 
 struct PublicationStorage {
-    static let publications = [   // let publications
+    static let publications = [
         /// Section 0.
         [
             Photo(title: "Photos",
@@ -27,6 +44,22 @@ struct PublicationStorage {
                   photo2: snowboarder!,
                   photo3: tulipsField!,
                   photo4: catDog!,
+//                  photo5: cake!,
+//                  photo6: flamingo!,
+//                  photo7: girl!,
+//                  photo8: mallard!,
+//                  photo9: iceCream!,
+//                  photo10: japaneseGarden!,
+//                  photo11: horseLady!,
+//                  photo12: madHatter!,
+//                  photo13: northernLight!,
+//                  photo14: pathosFair!,
+//                  photo15: spermWhale!,
+//                  photo16: samoyeds!,
+//                  photo17: scientistsSingapore!,
+//                  photo18: surfing!,
+//                  photo19: universe!,
+//                  photo20: wingsuitRider!,
                   arrowButton: arrow!)
         ],
         /// Section 1.

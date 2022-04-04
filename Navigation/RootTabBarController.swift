@@ -28,7 +28,7 @@ class RootTabBarController: UITabBarController {
         
         let logInViewController = UINavigationController(rootViewController: LogInViewController())
         logInViewController.tabBarItem.image = UIImage(systemName: "person.circle")
-        logInViewController.tabBarItem.selectedImage = UIImage(named: "person.circle.fill")
+        logInViewController.tabBarItem.selectedImage = UIImage(systemName: "person.circle.fill")
         logInViewController.tabBarItem.title = "Profile"
         
 // An array of the root view controllers displayed by the tab bar interface.
