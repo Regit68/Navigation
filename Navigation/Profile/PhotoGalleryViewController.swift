@@ -37,7 +37,13 @@ final class PhotoGalleryViewController: UIViewController {
 extension PhotoGalleryViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20 //PublicationStorage.publications[0].count
+        20
+//        switch PhotoSection(rawValue: section) {
+//        case .photos:
+//            return PublicationStorage.photos.count
+//        default:
+//            return 0
+//        }
     }
     /// Creating a cell.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -47,7 +53,7 @@ extension PhotoGalleryViewController: UICollectionViewDataSource {
             for: indexPath
         ) as! PhotoCollectionViewCell
         
-//        cell.photo = PublicationStorage.publications[indexPath.section][indexPath.item]
+//        cell.photo = PublicationStorage.photos[indexPath.section][indexPath.item]
         
 //        cell.backgroundColor = .red
         
@@ -84,7 +90,7 @@ extension PhotoGalleryViewController: UICollectionViewDelegateFlowLayout {
 private extension PhotoGalleryViewController {
     
     func setUpPhotoGalleryViewController() {
-//        view.backgroundColor = .white
+        view.backgroundColor = .systemPink
         navigationItem.title = "Photo Gallery"
         navigationItem.largeTitleDisplayMode = .never
         

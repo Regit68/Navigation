@@ -12,12 +12,15 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
         didSet {
             guard let photo = photo else { return }
             photoImageView.image = photo.photo1
+            photoImageView.image = photo.photo2
+            photoImageView.image = photo.photo3
+            photoImageView.image = photo.photo4
         }
     }
     
     private let photoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill//.scaleAspectFit
         return imageView
     }()
     

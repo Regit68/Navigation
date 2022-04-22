@@ -15,6 +15,7 @@ class FeedViewController: UIViewController {
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.spacing = 10
+        stackView.backgroundColor = .red
         return stackView
     }()
     
@@ -59,7 +60,6 @@ class FeedViewController: UIViewController {
         postViewController.postModel = PostModel(title: "New Post")
         self.navigationController?.pushViewController(postViewController, animated: true)
     }
-    
 }
 
 extension UIButton.Configuration {

@@ -16,25 +16,30 @@ class RootTabBarController: UITabBarController {
         updateTabBarAppearance()
     }
     func setUpTabBar() {
-        let feedUINavigationController = UINavigationController(rootViewController: FeedViewController())
-        feedUINavigationController.tabBarItem.image = UIImage(systemName: "house")
-        feedUINavigationController.tabBarItem.selectedImage = UIImage(systemName: "house.fill")
-        feedUINavigationController.tabBarItem.title = "Feed"
+        // An array of the root view controllers displayed by the tab bar interface.
+        viewControllers = [
+            createController(for: FeedViewController(),
+                             title: "Feed",
+                             image: UIImage(systemName: "house"),
+                             selectedImage: UIImage(systemName: "house.fill")),
+            createController(for: LogInViewController(),
+                             title: "Profile",
+                             image: UIImage(systemName: "person.circle"),
+                             selectedImage: UIImage(systemName: "person.circle.fill"))
+        ]
+        self.tabBar.tintColor = UIColor.purple
+    }
+    
+    private func createController(for rootViewController: UIViewController,
+                                  title: String,
+                                  image: UIImage?,
+                                  selectedImage: UIImage?) -> UIViewController {
+        let vc = UINavigationController(rootViewController: rootViewController)
+        vc.tabBarItem .title = title
+        vc.tabBarItem.image = image
+        vc.tabBarItem.selectedImage = selectedImage
         
-//        let profileUINavigationController = UINavigationController(rootViewController: ProfileViewController())
-//        profileUINavigationController.tabBarItem.image = UIImage(systemName: "person.circle")
-//        profileUINavigationController.tabBarItem.selectedImage = UIImage(named: "person.circle.fill")
-//        profileUINavigationController.tabBarItem.title = "Profile"
-        
-        let logInViewController = UINavigationController(rootViewController: LogInViewController())
-        logInViewController.tabBarItem.image = UIImage(systemName: "person.circle")
-        logInViewController.tabBarItem.selectedImage = UIImage(systemName: "person.circle.fill")
-        logInViewController.tabBarItem.title = "Profile"
-        
-// An array of the root view controllers displayed by the tab bar interface.
-        viewControllers = [feedUINavigationController, logInViewController]
-                           //profileUINavigationController]
-        
+        return vc
     }
     
     // Adds Tab Bar.
@@ -42,12 +47,11 @@ class RootTabBarController: UITabBarController {
     private func updateTabBarAppearance() {
         let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithOpaqueBackground()
-
+        
         let barTintColor: UIColor = .systemFill
         tabBarAppearance.backgroundColor = barTintColor
-
+        
         self.tabBar.standardAppearance = tabBarAppearance
         self.tabBar.scrollEdgeAppearance = tabBarAppearance
     }
-    
 }

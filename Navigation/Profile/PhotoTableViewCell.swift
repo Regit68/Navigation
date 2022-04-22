@@ -37,50 +37,20 @@ class PhotoTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    private let photo1ImageView: UIImageView = {
-        let imageView = UIImageView()
-        /// Adapts image to postImageView size.
-        imageView.contentMode = .scaleAspectFit
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 6
-        imageView.layer.borderColor = UIColor.gray.cgColor
-        imageView.layer.borderWidth = 1
-        return imageView
+    var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = 12
+        stackView.backgroundColor = .systemOrange
+        return stackView
     }()
+    /// !!! Cannot use instance member 'makeImageView' within property initializer; property initializers run before 'self' is available. USE LAZY VAR instead let.
+    lazy var photo1ImageView = makePhotoImageView()
+    lazy var photo2ImageView = makePhotoImageView()
+    lazy var photo3ImageView = makePhotoImageView()
+    lazy var photo4ImageView = makePhotoImageView()
     
-    private let photo2ImageView: UIImageView = {
-        let imageView = UIImageView()
-        /// Adapts image to postImageView size.
-        imageView.contentMode = .scaleAspectFit
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 6
-        imageView.layer.borderColor = UIColor.gray.cgColor
-        imageView.layer.borderWidth = 1
-        return imageView
-    }()
-    
-    private let photo3ImageView: UIImageView = {
-        let imageView = UIImageView()
-        /// Adapts image to postImageView size.
-        imageView.contentMode = .scaleAspectFit
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 6
-        imageView.layer.borderColor = UIColor.gray.cgColor
-        imageView.layer.borderWidth = 1
-        return imageView
-    }()
-    
-    private let photo4ImageView: UIImageView = {
-        let imageView = UIImageView()
-        /// Adapts image to postImageView size.
-        imageView.contentMode = .scaleAspectFit
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 6
-        imageView.layer.borderColor = UIColor.gray.cgColor
-        imageView.layer.borderWidth = 1
-        return imageView
-    }()
-
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -92,27 +62,54 @@ class PhotoTableViewCell: UITableViewCell {
         
         setUpPhotoTableViewCell()
     }
+    
+    private func makePhotoImageView() -> UIImageView {
+        let numberOfPhotos = 1...4
+        
+        for _ in numberOfPhotos {
+            let imageView = UIImageView()
+            /// Adapts image to postImageView size.
+            imageView.contentMode = .scaleAspectFill
+            imageView.clipsToBounds = true
+            imageView.layer.cornerRadius = 6
+            imageView.layer.borderColor = UIColor.gray.cgColor
+            imageView.layer.borderWidth = 1
+            stackView.addArrangedSubview(imageView)
+            
+            //return imageView
+        }
+        return imageView!
+    }
 }
 
 // MARK: Layout
 private extension PhotoTableViewCell {
     func setUpPhotoTableViewCell() {
-        let allOffsets: CGFloat = 1290 // 48 = 12+8+8+8+12
+        let allOffsets: CGFloat = 48
         let screenWidth: CGFloat = UIScreen.main.bounds.width
-        let photoSize: CGFloat = screenWidth - allOffsets / 4
+        let photoSize: CGFloat = (screenWidth - allOffsets) / 4
         
         [titleLabel,
          arrowButton,
+         stackView/*,
          photo1ImageView,
          photo2ImageView,
          photo3ImageView,
-         photo4ImageView].forEach {
+         photo4ImageView*/].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             
             contentView.addSubview($0)
         }
         
         NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            stackView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            stackView.heightAnchor.constraint(equalToConstant: photoSize),
+
+//            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+//            stackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+//            stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32),
@@ -120,30 +117,31 @@ private extension PhotoTableViewCell {
             arrowButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
             arrowButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
             arrowButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-
-            photo1ImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
-            photo1ImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
-            photo1ImageView.widthAnchor.constraint(equalToConstant: photoSize),
-            photo1ImageView.heightAnchor.constraint(equalToConstant: photoSize),
-            photo1ImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
-
-            photo2ImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
-            photo2ImageView.leadingAnchor.constraint(equalTo: photo1ImageView.trailingAnchor, constant: 8),
-            photo2ImageView.widthAnchor.constraint(equalToConstant: photoSize),
-            photo2ImageView.heightAnchor.constraint(equalToConstant: photoSize),
-            photo2ImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
-
-            photo3ImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
-            photo3ImageView.leadingAnchor.constraint(equalTo: photo2ImageView.trailingAnchor, constant: 8),
-            photo3ImageView.widthAnchor.constraint(equalToConstant: photoSize),
-            photo3ImageView.heightAnchor.constraint(equalToConstant: photoSize),
-            photo3ImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
-
-            photo4ImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
-            photo4ImageView.leadingAnchor.constraint(equalTo: photo3ImageView.trailingAnchor, constant: 8),
-            photo4ImageView.widthAnchor.constraint(equalToConstant: photoSize),
-            photo4ImageView.heightAnchor.constraint(equalToConstant: photoSize),
-            photo4ImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
+            
+//            photo1ImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
+//            photo1ImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+//            photo1ImageView.widthAnchor.constraint(equalToConstant: photoSize),
+//            photo1ImageView.heightAnchor.constraint(equalToConstant: photoSize),
+//            photo1ImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+            
+//            photo2ImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
+//            photo2ImageView.leadingAnchor.constraint(equalTo: photo1ImageView.trailingAnchor, constant: 8),
+//            photo2ImageView.widthAnchor.constraint(equalToConstant: photoSize),
+//            photo2ImageView.heightAnchor.constraint(equalToConstant: photoSize),
+//            photo2ImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+//
+//            photo3ImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
+//            photo3ImageView.leadingAnchor.constraint(equalTo: photo2ImageView.trailingAnchor, constant: 8),
+//            photo3ImageView.widthAnchor.constraint(equalToConstant: photoSize),
+//            photo3ImageView.heightAnchor.constraint(equalToConstant: photoSize),
+//            photo3ImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+//
+//            photo4ImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
+//            photo4ImageView.leadingAnchor.constraint(equalTo: photo3ImageView.trailingAnchor, constant: 8),
+//            photo4ImageView.widthAnchor.constraint(equalToConstant: photoSize),
+//            photo4ImageView.heightAnchor.constraint(equalToConstant: photoSize),
+//            photo4ImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
+//            photo4ImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
         ])
     }
 }
