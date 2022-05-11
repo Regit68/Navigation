@@ -15,7 +15,6 @@ class FeedViewController: UIViewController {
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.spacing = 10
-        stackView.backgroundColor = .red
         return stackView
     }()
     
@@ -54,7 +53,7 @@ class FeedViewController: UIViewController {
         }
     }
     
-//  Will appear Post ViewController and change title of Post VC.
+///  Will appear Post ViewController and change title of Post VC.
     @objc func onOpenPostButtonTap() {
         let postViewController = PostViewController()
         postViewController.postModel = PostModel(title: "New Post")

@@ -34,12 +34,12 @@ class RootTabBarController: UITabBarController {
                                   title: String,
                                   image: UIImage?,
                                   selectedImage: UIImage?) -> UIViewController {
-        let vc = UINavigationController(rootViewController: rootViewController)
-        vc.tabBarItem .title = title
-        vc.tabBarItem.image = image
-        vc.tabBarItem.selectedImage = selectedImage
+        let nc = UINavigationController(rootViewController: rootViewController)
+        nc.tabBarItem .title = title
+        nc.tabBarItem .image = image
+        nc.tabBarItem .selectedImage = selectedImage
         
-        return vc
+        return nc
     }
     
     // Adds Tab Bar.
@@ -47,10 +47,10 @@ class RootTabBarController: UITabBarController {
     private func updateTabBarAppearance() {
         let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithOpaqueBackground()
-        
+
         let barTintColor: UIColor = .systemFill
         tabBarAppearance.backgroundColor = barTintColor
-        
+
         self.tabBar.standardAppearance = tabBarAppearance
         self.tabBar.scrollEdgeAppearance = tabBarAppearance
     }

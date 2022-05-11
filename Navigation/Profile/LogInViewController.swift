@@ -28,6 +28,7 @@ class LogInViewController: UIViewController {
         textField.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         textField.clipsToBounds = true
         textField.textColor = .black
+        textField.returnKeyType = .done
         textField.backgroundColor = .systemGray6
         textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         textField.autocapitalizationType = .none
@@ -45,6 +46,7 @@ class LogInViewController: UIViewController {
         textField.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         textField.clipsToBounds = true
         textField.textColor = .black
+        textField.returnKeyType = .done
         textField.backgroundColor = .systemGray6
         textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         textField.autocapitalizationType = .none
@@ -186,9 +188,27 @@ class LogInViewController: UIViewController {
         self.navigationController?.pushViewController(profileViewController, animated: true)
     }
 }
+// MARK: Doesn't work!!!
+extension LogInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.emailPhoneTextField {
+            self.passwordTextField.becomeFirstResponder()
+        }
+        if textField == self.passwordTextField {
+            textField.resignFirstResponder()
+        }
+
+        return true
+    }
+}
 
 extension LogInViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        navigationController?.navigationBar.isHidden = true
+//        print(scrollView.contentOffset.y)
+//    }
+// MARK: NavigationBar
+    override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
         print(scrollView.contentOffset.y)
     }

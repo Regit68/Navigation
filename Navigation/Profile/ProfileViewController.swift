@@ -26,10 +26,13 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.addSubview(profileHeaderView)
         
         setUpProfileViewController()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.navigationBar.isHidden = true
     }
     
     private func setUpProfileViewController() {
@@ -68,7 +71,7 @@ extension ProfileViewController: UITableViewDataSource {
                 withIdentifier: String(describing: PhotoTableViewCell.self),
                 for: indexPath) as! PhotoTableViewCell
             
-            cell.photo = PublicationStorage.publications[indexPath.section][indexPath.row] as? Photo
+            cell.photo = PublicationStorage.publications[indexPath.section][indexPath.row] as? PhotoTableViewCellModel
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(
@@ -100,9 +103,7 @@ extension ProfileViewController: UITableViewDelegate {
         print("indexPath \(indexPath)")
         /// Will appear PhotoGalleryViewController.
         let photoGalleryVC = PhotoGalleryViewController()
-        
         self.navigationController?.pushViewController(photoGalleryVC, animated: true)
-        
         /// Cancel gray selection on section.
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -111,11 +112,3 @@ extension ProfileViewController: UITableViewDelegate {
         return 300
     }
 }
-/*
- //  Will appear Post ViewController and change title of Post VC.
-     @objc func onOpenPostButtonTap() {
-         let postViewController = PostViewController()
-         postViewController.postModel = PostModel(title: "New Post")
-         self.navigationController?.pushViewController(postViewController, animated: true)
-     }
- */

@@ -8,26 +8,28 @@
 import UIKit
 
 final class PhotoCollectionViewCell: UICollectionViewCell {
-    var photo: Photo? {
+    var photoGalary: PhotoGalleryModel? {
+//    var photo: PhotoTableViewCellModel? {
         didSet {
-            guard let photo = photo else { return }
-            photoImageView.image = photo.photo1
-            photoImageView.image = photo.photo2
-            photoImageView.image = photo.photo3
-            photoImageView.image = photo.photo4
+            guard let photo = photoGalary else { return }
+            photoImageView.image = photo.photos[1]
+//            photoImageView.image = photo.photo1
+//            photoImageView.image = photo.photo2
+//            photoImageView.image = photo.photo3
+//            photoImageView.image = photo.photo4
         }
     }
     
     private let photoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill//.scaleAspectFit
+        imageView.contentMode = .scaleAspectFit//.scaleAspectFill//
         return imageView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.backgroundColor = .systemOrange
+        contentView.backgroundColor = .systemGreen
         setUpPhotoCollectionViewCell()
     }
     /// For work with storyboards and XIB files.
@@ -45,10 +47,10 @@ private extension PhotoCollectionViewCell {
         }
         
         NSLayoutConstraint.activate([
-            photoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            photoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            photoImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            photoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             photoImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            photoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 8),
+            photoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             photoImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor),
             photoImageView.widthAnchor.constraint(equalTo: photoImageView.heightAnchor)
         ])

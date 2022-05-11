@@ -12,9 +12,10 @@ enum PhotoSection: Int, CaseIterable {
 }
 
 final class PhotoGalleryViewController: UIViewController {
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        // Scroll direction is vertical by default.
+        /// Scroll direction is vertical by default.
         layout.scrollDirection = .vertical
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -29,23 +30,30 @@ final class PhotoGalleryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .systemGray6
+        
         setUpPhotoGalleryViewController()
     }
 }
 
 extension PhotoGalleryViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        20
-//        switch PhotoSection(rawValue: section) {
-//        case .photos:
-//            return PublicationStorage.photos.count
-//        default:
-//            return 0
-//        }
+// MARK: Create number of sections.
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        /// allCases will return all cases that we added to the enum.
+        return PhotoSection.allCases.count
+//        return PublicationStorage.photoGalary.count
     }
-    /// Creating a cell.
+    // MARK: Amount of items in section.
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //        guard PublicationStorage.publications.isEmpty else { return 0 }
+        switch PhotoSection(rawValue: section) {
+        case .photos:
+            return PublicationStorage.photoGalary.count
+        default:
+            return 0
+        }
+    }
+// MARK: Creating a cell.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         /// Метод dequeue, чтобы не переполнялась память.
         let cell: PhotoCollectionViewCell = collectionView.dequeueReusableCell(
@@ -53,14 +61,13 @@ extension PhotoGalleryViewController: UICollectionViewDataSource {
             for: indexPath
         ) as! PhotoCollectionViewCell
         
-//        cell.photo = PublicationStorage.photos[indexPath.section][indexPath.item]
-        
-//        cell.backgroundColor = .red
+        cell.photoGalary = PublicationStorage.photoGalary[indexPath.section][indexPath.item]
         
         return cell
     }
 }
-/// View size for a cell.
+// MARK: View size for a cell.
+
 /// UICollectionViewDelegateFlowLayout - более разширенный делегат.
 extension PhotoGalleryViewController: UICollectionViewDelegateFlowLayout {
     var offset: CGFloat {
@@ -72,7 +79,6 @@ extension PhotoGalleryViewController: UICollectionViewDelegateFlowLayout {
         
         return CGSize.init(width: width, height: width)
     }
-    
     /// Space between items. Vertical.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return offset
@@ -83,26 +89,42 @@ extension PhotoGalleryViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: .zero, left: offset, bottom: offset, right: offset)
+        return UIEdgeInsets(top: offset, left: offset, bottom: offset, right: offset)
     }
 }
 
 private extension PhotoGalleryViewController {
     
     func setUpPhotoGalleryViewController() {
-        view.backgroundColor = .systemPink
-        navigationItem.title = "Photo Gallery"
-        navigationItem.largeTitleDisplayMode = .never
+        
+        let screenSize: CGFloat = UIScreen.main.bounds.width
         
         [collectionView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
         }
+        
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+}
+
+extension PhotoGalleryViewController: UIScrollViewDelegate {
+    //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    //        navigationController?.navigationBar.isHidden = true
+    //        print(scrollView.contentOffset.y)
+    //    }
+// MARK: Creating NavigationBar
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        navigationController?.navigationBar.isHidden = false
+        print(collectionView.contentOffset.y)
+        
+        navigationItem.title = "Photo Gallery"
+        navigationItem.largeTitleDisplayMode = .never
     }
 }
