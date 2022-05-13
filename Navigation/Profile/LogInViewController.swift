@@ -19,15 +19,17 @@ class LogInViewController: UIViewController {
     
     lazy var emailPhoneTextField: UIView = {
         let textField = UITextField()
-        textField.setLeftPaddingPoints(10)
-        textField.setRightPaddingPoints(10)
+        textField.setLeftPaddingPoints()
+        textField.setRightPaddingPoints()
         textField.placeholder = "Email or phone"
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 0.5
         textField.layer.cornerRadius = 10
         textField.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         textField.clipsToBounds = true
+        textField.delegate = self
         textField.textColor = .black
+        textField.returnKeyType = .done
         textField.backgroundColor = .systemGray6
         textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         textField.autocapitalizationType = .none
@@ -36,15 +38,17 @@ class LogInViewController: UIViewController {
     
     lazy var passwordTextField: UIView = {
         let textField = UITextField()
-        textField.setLeftPaddingPoints(10)
-        textField.setRightPaddingPoints(10)
+        textField.setLeftPaddingPoints()
+        textField.setRightPaddingPoints()
         textField.placeholder = "Password"
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 0.5
         textField.layer.cornerRadius = 10
         textField.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         textField.clipsToBounds = true
+        textField.delegate = self
         textField.textColor = .black
+        textField.returnKeyType = .done
         textField.backgroundColor = .systemGray6
         textField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         textField.autocapitalizationType = .none
@@ -82,9 +86,14 @@ class LogInViewController: UIViewController {
         
         setUpLogInView()
         
-        // MARK: KEYBOARD observers
+// MARK: KEYBOARD observers
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+// MARK: NavigationBar
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+        print(scrollView.contentOffset.y)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -186,10 +195,23 @@ class LogInViewController: UIViewController {
         self.navigationController?.pushViewController(profileViewController, animated: true)
     }
 }
+// MARK: textField options.
+extension LogInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.emailPhoneTextField {
+            self.passwordTextField.becomeFirstResponder()
+        }
+        if textField == self.passwordTextField {
+            textField.resignFirstResponder()
+        }
+
+        return true
+    }
+}
 
 extension LogInViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        navigationController?.navigationBar.isHidden = true
-        print(scrollView.contentOffset.y)
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        navigationController?.navigationBar.isHidden = true
+//        print(scrollView.contentOffset.y)
+//    }
 }

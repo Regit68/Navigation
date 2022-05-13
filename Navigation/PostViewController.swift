@@ -23,7 +23,7 @@ class PostViewController: UIViewController {
     func setUpPostView() {
         view.backgroundColor = .systemGreen
         navigationItem.title = "Post"
-        
+        navigationItem.largeTitleDisplayMode = .never
     }
     
     func renamePostViewTitle() {
@@ -33,10 +33,12 @@ class PostViewController: UIViewController {
     }
     
     func setUpInfoBarButton() {
-        let rightBarButton = UIBarButtonItem(title: "Info",
-                                             style: UIBarButtonItem.Style.plain,
-                                             target: self,
-                                             action: #selector(self.onInfoBarButtonTap))
+        let rightBarButton = UIBarButtonItem(
+            image: UIImage(systemName: "info.circle"),
+            style: UIBarButtonItem.Style.plain,
+            target: self,
+            action: #selector(self.onInfoBarButtonTap)
+        )
         self.navigationItem.rightBarButtonItem = rightBarButton
     }
     

@@ -14,6 +14,8 @@ class ProfileViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .grouped)
         
         /// Register a cell. Makes a cell visible.
+        tableView.register(PhotoTableViewCell.self, forCellReuseIdentifier: String(describing: PhotoTableViewCell.self))
+        /// Register a cell. Makes a cell visible.
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self))
         tableView.dataSource = self
         tableView.delegate = self
@@ -24,10 +26,13 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.addSubview(profileHeaderView)
         
         setUpProfileViewController()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.navigationBar.isHidden = true
     }
     
     private func setUpProfileViewController() {
@@ -44,44 +49,61 @@ class ProfileViewController: UIViewController {
         ])
     }
 }
-
+// MARK: DataSource
 extension ProfileViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
+//        guard PublicationStorage.publications.isEmpty else { return 0 }
         return PublicationStorage.publications.count
     }
     /// Number Of Rows In Section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PublicationStorage.publications[section].count
+        if section == 0 {
+            return PublicationStorage.publications[section].count
+        } else {
+            return PublicationStorage.publications[section].count
+        }
     }
     /// Shows row at section
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self), for: indexPath) as? PostTableViewCell {
-            /// Преобразование ячейки. Наполняем ячеку. Обращение к двухмерному массиву.
-            cell.post = PublicationStorage.publications[indexPath.section][indexPath.row]
+        
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: String(describing: PhotoTableViewCell.self),
+                for: indexPath) as! PhotoTableViewCell
             
+            cell.model = PublicationStorage.publications[indexPath.section][indexPath.row] as? PhotoTableViewCellModel
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: String(describing: PostTableViewCell.self),
+                for: indexPath) as! PostTableViewCell
+            
+            cell.post = PublicationStorage.publications[indexPath.section][indexPath.row] as? Post
             return cell
         }
-        
-        return UITableViewCell()
     }
-// MARK: Header for section.
+    
+    // MARK: Header for section.
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         /// Checks for number of section, to make sure this header added to the first one.
         return section == 0 ? profileHeaderView : nil
     }
 }
 
+// MARK: Delegate
 extension ProfileViewController: UITableViewDelegate {
     /// Cell's height redefinition.
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         /// Automatically counts the height of the cell.
         return UITableView.automaticDimension
     }
-    
+    /// Переход по ячейке.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /// Показывает адрес ячейки.
+        /// Shows cell address.
         print("indexPath \(indexPath)")
-        
+        /// Will appear PhotoGalleryViewController.
+        let photoGalleryVC = PhotoGalleryViewController()
+        self.navigationController?.pushViewController(photoGalleryVC, animated: true)
         /// Cancel gray selection on section.
         tableView.deselectRow(at: indexPath, animated: true)
     }

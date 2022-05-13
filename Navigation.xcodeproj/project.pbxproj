@@ -14,6 +14,8 @@
 		18028BD42764E4A400B52F54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18028BD22764E4A400B52F54 /* LaunchScreen.storyboard */; };
 		18028BF12768CD2A00B52F54 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18028BF02768CD2A00B52F54 /* FeedViewController.swift */; };
 		18028BF52768D16200B52F54 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18028BF42768D16200B52F54 /* PostViewController.swift */; };
+		18073C6327C66C84001E83A6 /* PhotoGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18073C6227C66C84001E83A6 /* PhotoGalleryViewController.swift */; };
+		1880A4BA27F56AC2008CE3BD /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1880A4B927F56AC2008CE3BD /* PhotoCollectionViewCell.swift */; };
 		18A374F32774AA1D00EE1E3A /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A374F22774AA1D00EE1E3A /* InfoViewController.swift */; };
 		18A375522783014900EE1E3A /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A375512783014900EE1E3A /* ProfileHeaderView.swift */; };
 		18A375542783016600EE1E3A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A375532783016600EE1E3A /* ProfileViewController.swift */; };
@@ -21,6 +23,8 @@
 		18A3A0AA27B14A0D00FF7836 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3A0A927B14A0D00FF7836 /* Post.swift */; };
 		18A3A0AD27B14CF800FF7836 /* PublicationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A3A0AC27B14CF800FF7836 /* PublicationStorage.swift */; };
 		18AE4CEA27AC04D70099AEE9 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE4CE927AC04D70099AEE9 /* LogInViewController.swift */; };
+		18B8BBD127BE5FCC00C59DE1 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B8BBD027BE5FCC00C59DE1 /* PhotoTableViewCell.swift */; };
+		18B8BBD427BE632300C59DE1 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B8BBD327BE632300C59DE1 /* Photo.swift */; };
 		18C4411527B54173000D2EC0 /* UITextField+Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C4411427B54173000D2EC0 /* UITextField+Padding.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +38,8 @@
 		18028BD52764E4A400B52F54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18028BF02768CD2A00B52F54 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		18028BF42768D16200B52F54 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		18073C6227C66C84001E83A6 /* PhotoGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryViewController.swift; sourceTree = "<group>"; };
+		1880A4B927F56AC2008CE3BD /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		18A374F22774AA1D00EE1E3A /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		18A375512783014900EE1E3A /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		18A375532783016600EE1E3A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +47,8 @@
 		18A3A0A927B14A0D00FF7836 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		18A3A0AC27B14CF800FF7836 /* PublicationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationStorage.swift; sourceTree = "<group>"; };
 		18AE4CE927AC04D70099AEE9 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		18B8BBD027BE5FCC00C59DE1 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
+		18B8BBD327BE632300C59DE1 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		18C4411427B54173000D2EC0 /* UITextField+Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Padding.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +106,9 @@
 				18A375512783014900EE1E3A /* ProfileHeaderView.swift */,
 				18A3A0A627B147F400FF7836 /* PostTableViewCell.swift */,
 				18A375532783016600EE1E3A /* ProfileViewController.swift */,
+				18B8BBD027BE5FCC00C59DE1 /* PhotoTableViewCell.swift */,
+				18073C6227C66C84001E83A6 /* PhotoGalleryViewController.swift */,
+				1880A4B927F56AC2008CE3BD /* PhotoCollectionViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -106,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				18A3A0A927B14A0D00FF7836 /* Post.swift */,
+				18B8BBD327BE632300C59DE1 /* Photo.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -200,11 +212,15 @@
 				18A3A0AA27B14A0D00FF7836 /* Post.swift in Sources */,
 				18028BCC2764E4A300B52F54 /* RootTabBarController.swift in Sources */,
 				18AE4CEA27AC04D70099AEE9 /* LogInViewController.swift in Sources */,
+				1880A4BA27F56AC2008CE3BD /* PhotoCollectionViewCell.swift in Sources */,
+				18B8BBD427BE632300C59DE1 /* Photo.swift in Sources */,
 				18028BC82764E4A300B52F54 /* AppDelegate.swift in Sources */,
 				18028BF12768CD2A00B52F54 /* FeedViewController.swift in Sources */,
 				18A374F32774AA1D00EE1E3A /* InfoViewController.swift in Sources */,
+				18073C6327C66C84001E83A6 /* PhotoGalleryViewController.swift in Sources */,
 				18A375542783016600EE1E3A /* ProfileViewController.swift in Sources */,
 				18028BCA2764E4A300B52F54 /* SceneDelegate.swift in Sources */,
+				18B8BBD127BE5FCC00C59DE1 /* PhotoTableViewCell.swift in Sources */,
 				18A3A0A727B147F400FF7836 /* PostTableViewCell.swift in Sources */,
 				18C4411527B54173000D2EC0 /* UITextField+Padding.swift in Sources */,
 				18A3A0AD27B14CF800FF7836 /* PublicationStorage.swift in Sources */,
@@ -353,7 +369,7 @@
 				INFOPLIST_FILE = Navigation/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -380,7 +396,7 @@
 				INFOPLIST_FILE = Navigation/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

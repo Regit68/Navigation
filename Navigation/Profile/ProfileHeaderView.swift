@@ -22,6 +22,17 @@ class ProfileHeaderView: UIView {
         return imageView
     }()
     
+    private lazy var addAvatarButton: UIButton = {
+        let button = UIButton()//(type: .system)
+        button.backgroundColor = .white
+        button.layer.cornerRadius = 22 / 2
+        button.clipsToBounds = true
+        button.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
+//        // Instead IBAction.
+//        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        return button
+    }()
+    
     private lazy var fullNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Temple Grandin"
@@ -40,8 +51,8 @@ class ProfileHeaderView: UIView {
     
     lazy var statusTextField: UITextField = {
         let textField = UITextField()
-        textField.setLeftPaddingPoints(10)
-        textField.setRightPaddingPoints(10)
+        textField.setLeftPaddingPoints()
+        textField.setRightPaddingPoints()
         textField.placeholder = "Enter status"
         textField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         textField.textColor = .black
@@ -77,9 +88,9 @@ class ProfileHeaderView: UIView {
     // Calling for storyboards.
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
+
         setUpProfileViews()
-        
+
     }
     
     @objc private func buttonPressed() {
@@ -93,6 +104,7 @@ class ProfileHeaderView: UIView {
     
     private func setUpProfileViews() {
         [avatarImageView,
+         addAvatarButton,
          fullNameLabel,
          statusLabel,
          statusTextField,
@@ -107,6 +119,11 @@ class ProfileHeaderView: UIView {
             avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             avatarImageView.widthAnchor.constraint(equalToConstant: avatarWidth),
             avatarImageView.heightAnchor.constraint(equalToConstant: avatarWidth),
+            
+            addAvatarButton.trailingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: -8),
+            addAvatarButton.heightAnchor.constraint(equalToConstant: 22),
+            addAvatarButton.widthAnchor.constraint(equalToConstant: 22),
+            addAvatarButton.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: -8),
             
             fullNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 27),
             fullNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),

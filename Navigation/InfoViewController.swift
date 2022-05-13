@@ -16,7 +16,7 @@ class InfoViewController: UIViewController {
         button.layer.cornerRadius = 5
         button.setTitleColor(UIColor.white, for: .normal)
         // when button is clicked, alert message will appear.
-        button.addTarget(self, action: #selector(showsLabelInfo(_:)), for: .touchUpInside)
+        button.addTarget(InfoViewController.self, action: #selector(showsLabelInfo(_:)), for: .touchUpInside)
         return button
     }()
 
@@ -41,11 +41,14 @@ class InfoViewController: UIViewController {
 
     func setUpInfoViews() {
         self.view.backgroundColor = UIColor.systemTeal
-        // Makes button to appear.
-        view.addSubview(alertMessageButton)
-        // Makes label to appear
-        view.addSubview(hiMessageLabel)
-
+        /// Makes button and label to appear.
+        [alertMessageButton,
+         hiMessageLabel].forEach {
+            view.addSubview($0)
+        }
+//        view.addSubview(alertMessageButton)
+//        // Makes label to appear
+//        view.addSubview(hiMessageLabel)
         NSLayoutConstraint.activate([
             alertMessageButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             alertMessageButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),

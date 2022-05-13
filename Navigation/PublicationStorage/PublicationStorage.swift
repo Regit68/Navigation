@@ -7,6 +7,31 @@
 
 import UIKit
 
+/// Posts for the uicollectionview.
+var rollsRoyce = UIImage(named: "rollsRoyce")
+var snowboarder = UIImage(named: "snowboarder")
+var tulipsField = UIImage(named: "tulipsField")
+var catDog = UIImage(named: "catDog")
+var arrow = UIImage(systemName: "arrow.right")
+
+var cake = UIImage(named: "cake")
+var flamingo = UIImage(named: "flamingo")
+var girl = UIImage(named: "girl")
+var mallard = UIImage(named: "mallard")
+var iceCream = UIImage(named: "iceCream")
+var japaneseGarden = UIImage(named: "japaneseGarden")
+var horseLady = UIImage(named: "horseLady")
+var madHatter = UIImage(named: "madHatter")
+var northernLight = UIImage(named: "northernLight")
+var pathosFair = UIImage(named: "pathosFair")
+var spermWhale = UIImage(named: "spermWhale")
+var samoyeds = UIImage(named: "samoyeds")
+var scientistsSingapore = UIImage(named: "scientistsSingapore")
+var surfing = UIImage(named: "surfing")
+var universe = UIImage(named: "universe")
+var wingsuitRider = UIImage(named: "wingsuitRider")
+
+// MARK: Posts for the uitableview.
 var harukiMurakami = UIImage(named: "1Q84")
 var wednesdayTimBurton = UIImage(named: "Wednesday Tim Burton")
 var moulinRouge = UIImage(named: "Moulin Rouge")
@@ -15,6 +40,15 @@ var heartTransplantation = UIImage(named: "Heart transplantation")
 struct PublicationStorage {
     static let publications = [
         /// Section 0.
+        [
+            PhotoTableViewCellModel(title: "Photos",
+                                    photo1: rollsRoyce!,
+                                    photo2: snowboarder!,
+                                    photo3: tulipsField!,
+                                    photo4: catDog!,
+                                    arrowButton: arrow!)
+        ],
+        /// Section 1.
         [
             Post(author: "atsukooshio",
                  image: harukiMurakami!,
@@ -38,4 +72,9 @@ struct PublicationStorage {
                  views: 76_721)
         ]
     ]
+    
+    /// Section 0.
+    static let photoGallery = PhotoGalleryModel(photos:
+                                                    [rollsRoyce!, snowboarder!, tulipsField!, catDog!, cake!, flamingo!, girl!, mallard!, iceCream!, japaneseGarden!, horseLady!, madHatter!, northernLight!, pathosFair!, spermWhale!, samoyeds!, scientistsSingapore!, surfing!, universe!, wingsuitRider!]
+    )
 }
