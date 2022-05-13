@@ -6,30 +6,20 @@
 //
 
 import UIKit
-
+// MARK: Information about one cell.
 final class PhotoCollectionViewCell: UICollectionViewCell {
-    var photoGalary: PhotoGalleryModel? {
-//    var photo: PhotoTableViewCellModel? {
-        didSet {
-            guard let photo = photoGalary else { return }
-            photoImageView.image = photo.photos[1]
-//            photoImageView.image = photo.photo1
-//            photoImageView.image = photo.photo2
-//            photoImageView.image = photo.photo3
-//            photoImageView.image = photo.photo4
-        }
-    }
-    
-    private let photoImageView: UIImageView = {
+    let photoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit//.scaleAspectFill//
+        imageView.contentMode = .scaleAspectFit
+        
         return imageView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.backgroundColor = .systemGreen
+        contentView.backgroundColor = .systemGray6
+        
         setUpPhotoCollectionViewCell()
     }
     /// For work with storyboards and XIB files.
@@ -56,4 +46,3 @@ private extension PhotoCollectionViewCell {
         ])
     }
 }
-

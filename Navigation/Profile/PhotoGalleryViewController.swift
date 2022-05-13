@@ -7,12 +7,15 @@
 
 import UIKit
 
-enum PhotoSection: Int, CaseIterable {
-    case photos = 0
-}
-
 final class PhotoGalleryViewController: UIViewController {
-    
+//    var photoGallery: PhotoGalleryModel? {
+//        didSet {
+//            guard let photo = photoGallery else { return }
+//            let photoArray = photo.photos
+//
+//        }
+//    }
+            
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         /// Scroll direction is vertical by default.
@@ -39,19 +42,11 @@ final class PhotoGalleryViewController: UIViewController {
 extension PhotoGalleryViewController: UICollectionViewDataSource {
 // MARK: Create number of sections.
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        /// allCases will return all cases that we added to the enum.
-        return PhotoSection.allCases.count
-//        return PublicationStorage.photoGalary.count
+        return 1
     }
-    // MARK: Amount of items in section.
+// MARK: Amount of items in section.
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //        guard PublicationStorage.publications.isEmpty else { return 0 }
-        switch PhotoSection(rawValue: section) {
-        case .photos:
-            return PublicationStorage.photoGalary.count
-        default:
-            return 0
-        }
+        return PublicationStorage.photoGallery.photos.count
     }
 // MARK: Creating a cell.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -61,7 +56,7 @@ extension PhotoGalleryViewController: UICollectionViewDataSource {
             for: indexPath
         ) as! PhotoCollectionViewCell
         
-        cell.photoGalary = PublicationStorage.photoGalary[indexPath.section][indexPath.item]
+        cell.photoImageView.image = PublicationStorage.photoGallery.photos[indexPath.item]
         
         return cell
     }

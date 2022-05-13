@@ -27,6 +27,7 @@ class LogInViewController: UIViewController {
         textField.layer.cornerRadius = 10
         textField.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         textField.clipsToBounds = true
+        textField.delegate = self
         textField.textColor = .black
         textField.returnKeyType = .done
         textField.backgroundColor = .systemGray6
@@ -45,6 +46,7 @@ class LogInViewController: UIViewController {
         textField.layer.cornerRadius = 10
         textField.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         textField.clipsToBounds = true
+        textField.delegate = self
         textField.textColor = .black
         textField.returnKeyType = .done
         textField.backgroundColor = .systemGray6
@@ -84,9 +86,14 @@ class LogInViewController: UIViewController {
         
         setUpLogInView()
         
-        // MARK: KEYBOARD observers
+// MARK: KEYBOARD observers
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+// MARK: NavigationBar
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+        print(scrollView.contentOffset.y)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -188,7 +195,7 @@ class LogInViewController: UIViewController {
         self.navigationController?.pushViewController(profileViewController, animated: true)
     }
 }
-// MARK: Doesn't work!!!
+// MARK: textField options.
 extension LogInViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.emailPhoneTextField {
@@ -207,9 +214,4 @@ extension LogInViewController: UIScrollViewDelegate {
 //        navigationController?.navigationBar.isHidden = true
 //        print(scrollView.contentOffset.y)
 //    }
-// MARK: NavigationBar
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
-        print(scrollView.contentOffset.y)
-    }
 }

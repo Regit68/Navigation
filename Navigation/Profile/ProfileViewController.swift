@@ -71,7 +71,7 @@ extension ProfileViewController: UITableViewDataSource {
                 withIdentifier: String(describing: PhotoTableViewCell.self),
                 for: indexPath) as! PhotoTableViewCell
             
-            cell.photo = PublicationStorage.publications[indexPath.section][indexPath.row] as? PhotoTableViewCellModel
+            cell.model = PublicationStorage.publications[indexPath.section][indexPath.row] as? PhotoTableViewCellModel
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(

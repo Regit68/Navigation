@@ -9,9 +9,9 @@ import UIKit
 
 class PhotoTableViewCell: UITableViewCell {
     
-    var photo: PhotoTableViewCellModel? {
+    var model: PhotoTableViewCellModel? {
         didSet {
-            guard let photo = photo else { return }
+            guard let photo = model else { return }
             titleLabel.text = photo.title
             arrowButton.image = photo.arrowButton
             photo1ImageView.image = photo.photo1
